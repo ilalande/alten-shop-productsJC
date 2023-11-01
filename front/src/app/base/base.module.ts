@@ -6,6 +6,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
 import { ThemeToggleButtonComponent } from './theme-toggle-button/theme-toggle-button.component';
+import { SharedModule } from 'app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,12 @@ import { ThemeToggleButtonComponent } from './theme-toggle-button/theme-toggle-b
     SidenavComponent,
     ThemeToggleButtonComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, SharedModule, ReactiveFormsModule],
   exports: [
     NavbarComponent,
     FooterComponent,
     SidenavComponent,
     BreadcrumbComponent,
-    ThemeToggleButtonComponent,
   ],
 })
 export class BaseModule {}
