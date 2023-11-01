@@ -2,14 +2,14 @@
   background-color: var(--primary-nav-color);
   height: 100%;
   position: fixed;
-  z-index: 4;
+  // z-index: 4;
   top: 0;
   width: 60px;
   transition: all 0.3s;
 
   [data-expanded-only] {
     display: none;
-  }
+  } 
 
   .pinned-icon {
     position: absolute;

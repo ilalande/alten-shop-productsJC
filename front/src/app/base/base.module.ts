@@ -21,6 +21,7 @@ import { ThemeToggleButtonComponent } from './theme-toggle-button/theme-toggle-b
     FooterComponent,
     SidenavComponent,
     BreadcrumbComponent,
+    ThemeToggleButtonComponent,
   ],
 })
 export class BaseModule {}
