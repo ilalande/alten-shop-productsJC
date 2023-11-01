@@ -4,6 +4,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { RouterModule } from '@angular/router';
 import { ThemeToggleButtonComponent } from './theme-toggle-button/theme-toggle-button.component';
 
 @NgModule({
@@ -14,7 +15,7 @@ import { ThemeToggleButtonComponent } from './theme-toggle-button/theme-toggle-b
     SidenavComponent,
     ThemeToggleButtonComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   exports: [
     NavbarComponent,
     FooterComponent,
