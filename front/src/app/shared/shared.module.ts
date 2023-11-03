@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PrimeNGModule } from './utils/primeng/primeng.module';
+import { ListComponent } from './ui/list/list.component';
+import { ListService } from './ui/list/list.service';
 
 @NgModule({
-  declarations: [],
+  declarations: [ListComponent],
+  providers: [ListService],
   imports: [
     CommonModule,
     PrimeNGModule,
@@ -14,6 +17,6 @@ import { PrimeNGModule } from './utils/primeng/primeng.module';
     FormsModule,
   ],
 
-  exports: [PrimeNGModule],
+  exports: [PrimeNGModule, ListComponent],
 })
 export class SharedModule {}
