@@ -1,9 +1,56 @@
-<div class="productList">
-  <ul>
-    <li *ngFor='let product of producList'>
-      {{product.name}}
-    </li>
-  </ul>
+<div class="card">
+  <!-- Using list component (in shared module) with <ng-container> and ngTemplateOutlet - cf doc on angular and doc on primeng https://codesandbox.io/s/mfpskv?file=/src/app/demo/data-view-layout-demo.html:12-16 -->
+  <app-list [items]="producList" [listItemTemplate]="listItemTemplate" [gridItemTemplate]="gridItemTemplate"></app-list>
 
 
+
+  <ng-template #listItemTemplate let-item>
+    <div>
+      <span>
+        <i class="pi pi-tag"></i>
+        <span>{{ item.category }}</span>
+      </span>
+      <div>{{item.inventoryStatus}}</div>
+    </div>
+    <div>
+      <div>
+        {{item.name}}
+      </div>
+      <div>
+        {{item.description}}
+      </div>
+      <div>
+        <p-rating [ngModel]="item.rating" [readonly]="true" [cancel]="false"></p-rating>
+      </div>
+    </div>
+    <div>
+      <span>{{ '$' + item.price }}</span>
+      <button pButton icon="pi pi-shopping-cart" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"></button>
+    </div>
+  </ng-template>
+
+  <ng-template #gridItemTemplate let-item>
+    <div>
+      <span>
+        <i class="pi pi-tag"></i>
+        <span>{{ item.category }}</span>
+      </span>
+      <div>{{item.inventoryStatus}}</div>
+    </div>
+    <div>
+      <div>
+        {{item.name}}
+      </div>
+      <div>
+        {{item.description}}
+      </div>
+      <div>
+        <p-rating [ngModel]="item.rating" [readonly]="true" [cancel]="false"></p-rating>
+      </div>
+    </div>
+    <div>
+      <span>{{ '$' + item.price }}</span>
+      <button pButton icon="pi pi-shopping-cart" [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"></button>
+    </div>
+  </ng-template>
 </div>
