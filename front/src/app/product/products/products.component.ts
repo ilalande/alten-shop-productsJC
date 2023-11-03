@@ -7,7 +7,7 @@ import { Product } from '../product.model.js';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   producList: Product[] = [];
   constructor(private productService: ProductService) {}
   ngOnInit(): void {
