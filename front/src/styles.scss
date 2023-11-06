@@ -1,7 +1,15 @@
 
 /* PrimeNG */
-@import "primeicons/primeicons.css";
-@import "primeng/resources/primeng.min.css";
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/primeng.min.css";
+
+/* Custom SCSS */
+@import "dropdown-panel";
+@import "error-card";
+@import "dialog";
+@import "portrait";
+@import "table";
+@import "input-text";
 
 /* Fonts */
 @font-face {
