@@ -45,7 +45,7 @@ export class ListComponent<T> implements OnInit {
   @Input() public readonly totalRecords: number;
   @Input() public listItemTemplate!: TemplateRef<unknown>;
   @Input() public gridItemTemplate!: TemplateRef<unknown>;
-  @Input() public readonly sortOptions: SelectItem[];
+  @Input() public sortOptions: SelectItem[];
   @Input() public readonly layout: 'grid' | 'list' = 'grid';
   @Input() public readonly enableAdd: boolean; // can add item from list
   @Input() public readonly enableDateRange: boolean; // can filter by date range

@@ -27,11 +27,11 @@
   <ng-template let-item let-i="rowIndex" pTemplate="listItem">
     <div class="list-item-container">
       <div class="list-item">
-        <!-- <ng-container *ngIf="selectable">
+        <ng-container *ngIf="selectable">
           <div class="checkbox">
-            <p-checkbox [binary]="true" (onChange)="selectItem($event, item)"></p-checkbox>
+            <p-checkbox [binary]="true"></p-checkbox>
           </div>
-        </ng-container> -->
+        </ng-container>
         <ng-container [ngTemplateOutlet]="listItemTemplate"
           [ngTemplateOutletContext]="{$implicit: item, index: i, display: 'list'}"></ng-container>
       </div>
