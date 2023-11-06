@@ -50,7 +50,7 @@ export class ListComponent<T> implements OnInit {
   @Input() public readonly enableAdd: boolean; // can add item from list
   @Input() public readonly enableDateRange: boolean; // can filter by date range
   @Input() private readonly listKey!: string; // for local service storage
-  @Input() public readonly sortKey!: string; // 'name', 'title'... search text param key
+  @Input() public sortKey!: string; // 'name', 'title'... search text param key
   @Input() public readonly dateRangeKey: string; // 'creationTime'... used with enableDateRange
   @Input() public readonly selectable: boolean;
   // Search performed by backend
@@ -99,6 +99,7 @@ export class ListComponent<T> implements OnInit {
       if (this.backEndSearch) {
         this.emitFilters();
       } else {
+        console.log(Sort.desc);
         this.sortOrder = order === Sort.desc ? -1 : 1;
         this.sortField = field;
       }

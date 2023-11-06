@@ -1,6 +1,7 @@
 <div class="card">
   <!-- Using list component (in shared module) with <ng-container> and ngTemplateOutlet - cf doc on angular and doc on primeng https://codesandbox.io/s/mfpskv?file=/src/app/demo/data-view-layout-demo.html:12-16 -->
-  <app-list [items]="producList" [listItemTemplate]="listItemTemplate" [gridItemTemplate]="gridItemTemplate"></app-list>
+  <app-list [items]="producList" [listItemTemplate]="listItemTemplate" [gridItemTemplate]="gridItemTemplate"
+    [sortOptions]="sortOptions" [sortKey]="sortField"></app-list>
 
 
 
