@@ -99,7 +99,6 @@ export class ListComponent<T> implements OnInit {
       if (this.backEndSearch) {
         this.emitFilters();
       } else {
-        console.log(Sort.desc);
         this.sortOrder = order === Sort.desc ? -1 : 1;
         this.sortField = field;
       }
