@@ -1,5 +1,13 @@
 import { formatDate } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { isArray } from '@dwtechs/checkhard';
 import { CrudItemOptions } from 'app/shared/utils/crud-item-options/crud-item-options.model';
 import { TableLazyLoadEvent } from 'app/shared/ui/table/table-lazyload-event.model';
@@ -15,11 +23,11 @@ import { ControlType } from 'app/shared/utils/crud-item-options/control-type.mod
 })
 export class TableComponent<T> implements OnChanges {
   @ViewChild('dataTable') dataTable: Table;
-  @Input() public readonly data: T[];
-  @Input() public readonly config: CrudItemOptions[];
+  @Input() public data: T[];
+  @Input() public config: CrudItemOptions[];
   @Input() public readonly editableRows: boolean = true;
   @Input() public readonly deletableRows: boolean = true;
-  @Input() public readonly selectable: boolean;
+  @Input() public selectable: boolean;
   @Input() public readonly allowAdd: boolean;
   @Input() public readonly allowDelete: boolean;
   @Input() public readonly allowEdit: boolean;
@@ -43,14 +51,14 @@ export class TableComponent<T> implements OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    const { currentValue: config, previousValue: prevConfig } = changes.config ?? {};
+    const { currentValue: config, previousValue: prevConfig } =
+      changes.config ?? {};
     const configChanged = JSON.stringify(config) !== JSON.stringify(prevConfig);
     if (config && configChanged) {
       this.cols = this.getColumns();
     }
     const { currentValue: data, previousValue: prevData } = changes.data ?? {};
     if (data && prevData) {
-
     }
   }
 
@@ -60,14 +68,14 @@ export class TableComponent<T> implements OnChanges {
       rows: event.rows,
       sortOrder: event.sortOrder as 1 | -1,
       sortField: event.sortField,
-      filters: event.filters
+      filters: event.filters,
       // filters: event.filters ? JSON.stringify(event.filters) : '' as any
     };
     this.lazyLoaded.emit(cleanEvent);
   }
 
   public onEdit(rowData: T): void {
-    this.editedEntry = {...rowData};
+    this.editedEntry = { ...rowData };
     this.creation = false;
     this.entryEditionDialogDisplayed = true;
   }
@@ -77,7 +85,7 @@ export class TableComponent<T> implements OnChanges {
   }
 
   public onDeleteMultiple(): void {
-    const ids = this.selectedEntries.map(entry => entry.id);
+    const ids = this.selectedEntries.map((entry) => entry.id);
     this.deleted.emit(ids);
   }
 
@@ -96,9 +104,9 @@ export class TableComponent<T> implements OnChanges {
     this.editedEntry = null;
     this.entryEditionDialogDisplayed = false;
   }
-  
-  public onDeleteEntry(id: number): void{
-    this.deleted.emit([id])
+
+  public onDeleteEntry(id: number): void {
+    this.deleted.emit([id]);
     this.entryEditionDialogDisplayed = false;
   }
 
@@ -110,13 +118,14 @@ export class TableComponent<T> implements OnChanges {
     this.selectedEntries = [];
   }
 
-  public export():void{
+  public export(): void {
     this.exportDialogDisplay = true;
   }
 
   private getColumns(): TableColumn[] {
-    return this.config.map(item => {
-      const renderedValue = (cellValue: unknown, isTooltip = false) => this.getRenderer(cellValue, item, isTooltip);
+    return this.config.map((item) => {
+      const renderedValue = (cellValue: unknown, isTooltip = false) =>
+        this.getRenderer(cellValue, item, isTooltip);
       const columnOptions = item.columnOptions;
       return {
         ...item,
@@ -125,14 +134,21 @@ export class TableComponent<T> implements OnChanges {
         isList: item.controlType === 'table',
         isVisible: columnOptions.default,
         renderer: (cellValue: unknown) => renderedValue(cellValue),
-        tooltip: cellValue => columnOptions.tooltip ? columnOptions.tooltip(cellValue) : renderedValue(cellValue, true),
+        tooltip: (cellValue) =>
+          columnOptions.tooltip
+            ? columnOptions.tooltip(cellValue)
+            : renderedValue(cellValue, true),
         filterable: columnOptions.filterable !== false,
         sortable: columnOptions.sortable !== false,
-      }
+      };
     });
   }
 
-  private getRenderer(cellValue: unknown, control: CrudItemOptions, isTooltip: boolean): string {
+  private getRenderer(
+    cellValue: unknown,
+    control: CrudItemOptions,
+    isTooltip: boolean
+  ): string {
     if (control.columnOptions.customCellRenderer) {
       return control.columnOptions.customCellRenderer(cellValue);
     }
@@ -140,7 +156,7 @@ export class TableComponent<T> implements OnChanges {
       case ControlType.TABLE: {
         return this.tableCellRenderer(cellValue);
       }
-      case ControlType.SELECT: {        
+      case ControlType.SELECT: {
         return this.selectCellRenderer(cellValue, control);
       }
       case ControlType.MULTISELECT: {
@@ -161,23 +177,34 @@ export class TableComponent<T> implements OnChanges {
   private tableCellRenderer(cellValue: unknown): string {
     return this.isCellArray(cellValue) ? cellValue.length.toString() : '';
   }
-  
-  private selectCellRenderer(cellValue: unknown, column: CrudItemOptions): string {
+
+  private selectCellRenderer(
+    cellValue: unknown,
+    column: CrudItemOptions
+  ): string {
     const option = this.getOption(column, cellValue);
     if (!option) return '';
     return option.label;
   }
 
-  private multiselectCellRenderer(cellValue: unknown, column: CrudItemOptions, tooltip: boolean): string {
+  private multiselectCellRenderer(
+    cellValue: unknown,
+    column: CrudItemOptions,
+    tooltip: boolean
+  ): string {
     if (this.isCellArray(cellValue)) {
-      const separator = tooltip ? ', ': '';
-      let values = cellValue.map(val => this.getOption(column, val)).filter(val => !!val);
-      return values.map(val => {
-        if (val.styleClass && !tooltip) {
-          return `<i class="${val.styleClass}">${val.label}</i>`;
-        }
-        return val.label;
-      }).join(separator);
+      const separator = tooltip ? ', ' : '';
+      const values = cellValue
+        .map((val) => this.getOption(column, val))
+        .filter((val) => !!val);
+      return values
+        .map((val) => {
+          if (val.styleClass && !tooltip) {
+            return `<i class="${val.styleClass}">${val.label}</i>`;
+          }
+          return val.label;
+        })
+        .join(separator);
     }
     return '';
   }
@@ -186,7 +213,9 @@ export class TableComponent<T> implements OnChanges {
     if (tooltip) {
       return cellValue ? 'Yes' : 'No';
     }
-    return cellValue ? '<i class="pi pi-check green"></i>' : '<i class="pi pi-times indigo"></i>';
+    return cellValue
+      ? '<i class="pi pi-check green"></i>'
+      : '<i class="pi pi-times indigo"></i>';
   }
 
   private isCellArray(cellValue: unknown): cellValue is unknown[] {
@@ -194,7 +223,6 @@ export class TableComponent<T> implements OnChanges {
   }
 
   private getOption(column: CrudItemOptions, cellValue: unknown): SelectItem {
-    return column.options.find(opt => opt.value === cellValue)
+    return column.options.find((opt) => opt.value === cellValue);
   }
-
 }
