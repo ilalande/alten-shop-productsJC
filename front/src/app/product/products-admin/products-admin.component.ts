@@ -12,12 +12,11 @@ import { productTableConfig } from './product-admin.config';
 export class ProductsAdminComponent implements OnInit {
   producList: Product[] = [];
   public configCrudItemOptions: CrudItemOptions[] = productTableConfig;
-
+  public entity = Product; // class of new entry
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.productService.getProductList().subscribe((productsFromJsonFile) => {
-      console.log(productsFromJsonFile);
       this.producList = productsFromJsonFile.data;
     });
   }

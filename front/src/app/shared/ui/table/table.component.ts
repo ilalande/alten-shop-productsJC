@@ -31,7 +31,7 @@ export class TableComponent<T> implements OnChanges {
   @Input() public readonly allowAdd: boolean;
   @Input() public readonly allowDelete: boolean;
   @Input() public readonly allowEdit: boolean;
-  @Input() public readonly entity; // class of new entry
+  @Input() public entity; // class of new entry
   @Input() public readonly lazy: boolean = false;
   @Input() public readonly totalRecords: number;
   @Input() public readonly multiSelect: boolean;
@@ -94,6 +94,7 @@ export class TableComponent<T> implements OnChanges {
   }
 
   public onNew(): void {
+    console.log('new');
     this.entryEditionDialogDisplayed = true;
     this.creation = true;
     this.editedEntry = new this.entity();
