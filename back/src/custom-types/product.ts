@@ -1,6 +1,6 @@
 export interface Product {
   id: string;
-  jsonId?: number;
+  jsonId: number;
   code: string;
   name: string;
   description: string;
@@ -9,5 +9,5 @@ export interface Product {
   inventoryStatus: string;
   category: string;
   image?: string | null;
-  rating?: number;
+  rating?: number | null;
 }
