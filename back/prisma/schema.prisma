@@ -18,22 +18,9 @@ model Product {
     description     String
     image           String?
     price           Float
-    category       Category 
+    category       String
     quantity        Int
-    inventoryStatus InventoryStatus
-    rating           Int
+    inventoryStatus String
+    rating           Int?
 
-}
-
-enum Category {
-Accessories
-Clothing
-Fitness
-Electronics
-}
-
-enum InventoryStatus {
-INSTOCK
-LOWSTOCK
-OUTOFSTOCK
 }
