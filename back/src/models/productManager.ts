@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { Product } from '../custom-types/product.js';
+import { NewProduct } from '../custom-types/payload.js';
 const prisma = new PrismaClient();
 
 export async function findAll(): Promise<Product[]> {
@@ -7,33 +8,36 @@ export async function findAll(): Promise<Product[]> {
   return products;
 }
 
-// export async function findById(id: string): Promise<Product> {
-//   return await prisma.product.findUnique({
-//     where: {
-//       id: parseInt(id),
-//     },
-//   });
-// }
+export async function findById(id: string): Promise<Product | null> {
+  return await prisma.product.findUnique({
+    where: {
+      id: id,
+    },
+  });
+}
 
-// export async function create(newProduct: Product): Promise<Product> {
-//   return await prisma.product.create({
-//     data: newProduct,
-//   });
-// }
+export async function create(newProduct: NewProduct): Promise<Product | null> {
+  return await prisma.product.create({
+    data: newProduct,
+  });
+}
 
-// export async function update(id: string, productToUpdate: Product) {
-//   return await prisma.product.update({
-//     where: {
-//       id: parseInt(id),
-//     },
-//     data: productToUpdate,
-//   });
-// }
+export async function edit(
+  id: string,
+  productToUpdate: NewProduct
+): Promise<Product | null> {
+  return await prisma.product.update({
+    where: {
+      id: id,
+    },
+    data: productToUpdate,
+  });
+}
 
-// export async function remove(id: string) {
-//   return await prisma.product.update({
-//     where: {
-//       id: parseInt(id),
-//     },
-//   });
-// }
+export async function remove(id: string) {
+  return await prisma.product.delete({
+    where: {
+      id: id,
+    },
+  });
+}
