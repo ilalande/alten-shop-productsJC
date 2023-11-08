@@ -1,8 +1,11 @@
 import express, { Express, Request, Response } from 'express';
 import { productRoutes } from './src/routes/product.route.js';
+import cors from 'cors';
+
 require('dotenv').config();
 const app: Express = express();
 app.use(express.json());
+app.use(cors());
 const port = parseInt(process.env.SERVER_PORT ?? '5000', 10);
 app.listen(port, () => {
   console.log(`Server is listening on ${port}`);
