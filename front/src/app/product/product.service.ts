@@ -7,9 +7,10 @@ import { Product } from './product.model';
   providedIn: 'root',
 })
 export class ProductService {
+  private apiBaseUrl = 'http://localhost:5000';
   constructor(private http: HttpClient) {}
 
-  getProductList(): Observable<{ data: Product[] }> {
-    return this.http.get<{ data: Product[] }>('assets/products.json');
+  getProductList(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiBaseUrl}/products`);
   }
 }

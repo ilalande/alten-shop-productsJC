@@ -17,7 +17,8 @@ export class ProductsAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProductList().subscribe((productsFromJsonFile) => {
-      this.producList = productsFromJsonFile.data;
+      this.producList = productsFromJsonFile;
+      console.log(this.producList);
     });
   }
 }
