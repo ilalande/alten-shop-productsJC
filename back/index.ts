@@ -5,12 +5,10 @@ const app: Express = express();
 app.use(express.json());
 const port = parseInt(process.env.SERVER_PORT ?? '5000', 10);
 app.listen(port, () => {
-  // écouter les les connexions entrantes => le serveur est créé mais il n'y a pas encore de routes
-
   console.log(`Server is listening on ${port}`);
 });
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
+  res.send('Welcome to Alten product shop API');
 });
 
 app.use('/products', productRoutes);

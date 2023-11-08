@@ -1,7 +1,6 @@
-import { PrismaClient } from '@prisma/client';
-import { Product } from '../custom-types/product.js';
-import { NewProduct } from '../custom-types/payload.js';
-const prisma = new PrismaClient();
+import prisma from '../../prisma/index.js';
+import { Product } from '../types/product.js';
+import { NewProduct } from '../types/payload.js';
 
 export async function findAll(): Promise<Product[]> {
   const products = await prisma.product.findMany();
