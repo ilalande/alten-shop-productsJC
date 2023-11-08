@@ -57,9 +57,6 @@ export class TableComponent<T> implements OnChanges {
     if (config && configChanged) {
       this.cols = this.getColumns();
     }
-    const { currentValue: data, previousValue: prevData } = changes.data ?? {};
-    if (data && prevData) {
-    }
   }
 
   public onLazyLoad(event: LazyLoadEvent) {
