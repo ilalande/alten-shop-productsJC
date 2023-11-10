@@ -4,6 +4,15 @@ import { ScreenWidth } from 'app/shared/utils/crud-item-options/screen-width.mod
 
 export const productTableConfig: CrudItemOptions[] = [
   {
+    key: 'id',
+    controlType: ControlType.INPUT,
+    label: 'ID',
+    columnOptions: {
+      minScreenSize: ScreenWidth.large,
+      hidden: true,
+    },
+  },
+  {
     key: 'code',
     label: 'code',
     controlType: ControlType.INPUT,
