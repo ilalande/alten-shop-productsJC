@@ -1,4 +1,5 @@
 <div class="wrapper">
-  <app-table [data]="producList" [selectable]="true" [config]="configCrudItemOptions" [entity]="entity">
+  <app-table [data]="producList" [selectable]="true" [config]="configCrudItemOptions" [entity]="entity"
+    (deleted)="onDelete($event)" (saved)="onSave($event)" (lazyLoaded)="loadData($event)">
   </app-table>
 </div>

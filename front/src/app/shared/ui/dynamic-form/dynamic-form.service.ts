@@ -19,7 +19,7 @@ export class DynamicFormService {
   }
 
   private getValue(control: CrudItemOptions): unknown {
-    let value = control.controlType === 'date' ? new Date(control.value) : control.value;
+    const value = control.controlType === 'date' ? new Date(control.value) : control.value;
     return value || '';
   }
 

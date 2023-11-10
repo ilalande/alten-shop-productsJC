@@ -57,9 +57,6 @@ export class TableComponent<T> implements OnChanges {
     if (config && configChanged) {
       this.cols = this.getColumns();
     }
-    const { currentValue: data, previousValue: prevData } = changes.data ?? {};
-    if (data && prevData) {
-    }
   }
 
   public onLazyLoad(event: LazyLoadEvent) {
@@ -94,12 +91,11 @@ export class TableComponent<T> implements OnChanges {
   }
 
   public onNew(): void {
-    console.log('new');
     this.entryEditionDialogDisplayed = true;
     this.creation = true;
     this.editedEntry = new this.entity();
   }
-
+  // When dialog for new or updated item is saved
   public onEditedEntrySave(editedEntry): void {
     this.saved.emit(editedEntry);
     this.editedEntry = null;
@@ -122,7 +118,7 @@ export class TableComponent<T> implements OnChanges {
   public export(): void {
     this.exportDialogDisplay = true;
   }
-
+  //With config file permits to determine columns
   private getColumns(): TableColumn[] {
     return this.config.map((item) => {
       const renderedValue = (cellValue: unknown, isTooltip = false) =>

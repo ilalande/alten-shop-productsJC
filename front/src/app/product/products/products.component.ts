@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProductList().subscribe((productsFromJsonFile) => {
-      this.producList = productsFromJsonFile.data;
+      this.producList = productsFromJsonFile;
     });
     this.sortOptions = [
       { label: 'Price High to Low', value: 'desc-price' },

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+//needs to stay to work
 import { ProductModule } from './product/product.module';
 import { ProductsAdminComponent } from './product/products-admin/products-admin.component';
 import { ProductsComponent } from './product/products/products.component';
