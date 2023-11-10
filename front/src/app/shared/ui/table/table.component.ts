@@ -91,12 +91,11 @@ export class TableComponent<T> implements OnChanges {
   }
 
   public onNew(): void {
-    console.log('new');
     this.entryEditionDialogDisplayed = true;
     this.creation = true;
     this.editedEntry = new this.entity();
   }
-
+  // When dialog for new or updated item is saved
   public onEditedEntrySave(editedEntry): void {
     this.saved.emit(editedEntry);
     this.editedEntry = null;
