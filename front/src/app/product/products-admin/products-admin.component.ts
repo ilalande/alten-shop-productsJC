@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BaseTableLoader } from 'app/shared/ui/table/base-table-loader.class';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../product.service';
@@ -11,7 +11,10 @@ import { productTableConfig } from './product-admin.config';
   templateUrl: './products-admin.component.html',
   styleUrls: ['./products-admin.component.scss'],
 })
-export class ProductsAdminComponent extends BaseTableLoader implements OnInit {
+export class ProductsAdminComponent
+  extends BaseTableLoader
+  implements OnInit, OnDestroy
+{
   producList: Product[] = [];
   public configCrudItemOptions: CrudItemOptions[] = productTableConfig;
   public entity = Product; // class of new entry
@@ -35,31 +38,26 @@ export class ProductsAdminComponent extends BaseTableLoader implements OnInit {
   }
 
   deleteProduct(productId: number) {
-    console.log('id of one product' + productId);
-
-    this.productService.deleteProduct(productId).subscribe((data) => {
-      console.log(data);
+    this.productService.deleteProduct(productId).subscribe(() => {
       this.getProductList();
     });
     // this.handleReload(this.productService.deleteProduct(productId));
   }
 
-  deleteProducts(productIds: number[]) {
-    let idsToDelete = [...productIds];
-    for (const id of idsToDelete) {
-      this.deleteProduct(id);
-    }
-    idsToDelete = [];
-  }
   // Problem in case of multiple deletes on multiple items in the same time : old selected datas are not removed.
   // Tried to fix it with BaseTableLoader class and lazyLoaded. And  but doesn'y work. And tried with handleReload (see comment upside) but doesn'y work either
 
-  onDelete(event: number[]) {
-    if (event.length > 1) {
-      console.log(event);
-      return this.deleteProducts(event);
+  onDelete(productsIds: number[]) {
+    if (productsIds.length > 1) {
+      for (const id of productsIds) {
+        this.deleteProduct(id);
+      }
     } else {
-      return this.deleteProduct(event[0]);
+      return this.deleteProduct(productsIds[0]);
     }
+  }
+
+  ngOnDestroy() {
+    this.errorSub.unsubscribe();
   }
 }

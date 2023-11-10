@@ -18,8 +18,6 @@ export class ProductService {
   }
 
   deleteProduct(id: number): Observable<null> {
-    console.log(id);
-
     return this.http.delete<null>(`${this.apiBaseUrl}/products/${id}`);
   }
 }
