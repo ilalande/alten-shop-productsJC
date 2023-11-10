@@ -7,7 +7,7 @@
   styleClass="p-datatable-striped p-datatable-gridlines" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
   [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedEntries"
-  [lazy]="lazy" [totalRecords]="totalRecords" data-cy="table">
+  [lazy]="lazy" [totalRecords]="totalRecords" (onLazyLoad)="onLazyLoad($event)" data-cy="table">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th style="width: 3rem" *ngIf="selectable">

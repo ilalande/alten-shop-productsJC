@@ -119,7 +119,7 @@ export class TableComponent<T> implements OnChanges {
   public export(): void {
     this.exportDialogDisplay = true;
   }
-
+  //With config file permits to determine columns
   private getColumns(): TableColumn[] {
     return this.config.map((item) => {
       const renderedValue = (cellValue: unknown, isTooltip = false) =>
