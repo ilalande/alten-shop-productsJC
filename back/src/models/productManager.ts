@@ -1,6 +1,7 @@
 import prisma from '../../prisma/index.js';
 import { Product } from '../types/product.js';
-import { NewProduct } from '../types/payload.js';
+import { NewProduct, PayloadNewProduct } from '../types/payload';
+import { transformBodyData } from '../utils/transformBodyData';
 
 export async function findAll(): Promise<Product[]> {
   const products = await prisma.product.findMany();
@@ -15,21 +16,23 @@ export async function findById(id: number): Promise<Product | null> {
   });
 }
 
-export async function create(newProduct: NewProduct): Promise<Product | null> {
+export async function create(
+  newProduct: PayloadNewProduct
+): Promise<Product | null> {
   return await prisma.product.create({
-    data: newProduct,
+    data: transformBodyData(newProduct),
   });
 }
 
 export async function edit(
   id: number,
-  productToUpdate: NewProduct
+  productToUpdate: PayloadNewProduct
 ): Promise<Product | null> {
   return await prisma.product.update({
     where: {
       id: id,
     },
-    data: productToUpdate,
+    data: transformBodyData(productToUpdate),
   });
 }
 
