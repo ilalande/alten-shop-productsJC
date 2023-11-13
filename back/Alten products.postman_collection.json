@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "a21e84fa-4cfc-49f1-93ca-dda28973f5cd",
+		"name": "Alten products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20647599"
+	},
+	"item": [
+		{
+			"name": "Get tasks/id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/products/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/products/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\t\t{\r\n\t\t\t\"jsonId\": 2222,\r\n\t\t\t\"code\": \"AAAA\",\r\n\t\t\t\"name\": \"Black Watch\",\r\n\t\t\t\"description\": \"Product Description\",\r\n\t\t\t\"image\": \"black-watch.jpg\",\r\n\t\t\t\"price\": 72,\r\n\t\t\t\"category\": \"Accessories\",\r\n\t\t\t\"quantity\": 61,\r\n\t\t\t\"inventoryStatus\": \"INSTOCK\",\r\n\t\t\t\"rating\": 4\r\n\t\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"jsonId\": 3333455,\r\n    \"code\": \"zz21cz3c1\",\r\n    \"name\": \"Red Watch\",\r\n    \"description\": \"Product Description of red watch\",\r\n    \"image\": \"black-watch.jpg\",\r\n    \"price\": 72,\r\n    \"category\": \"Accessories\",\r\n    \"quantity\": 61,\r\n    \"inventoryStatus\": \"INSTOCK\",\r\n    \"rating\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/products/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"products",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

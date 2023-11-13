@@ -11,13 +11,13 @@ datasource db {
 }
 
 model Product {
-    id              String      @id @default(cuid())
-    jsonId          Int
+id    Int     @default(autoincrement()) @id
+    jsonId          Int?
     code            String   @unique
     name            String
     description     String
     image           String?
-    price           Float
+    price           Int
     category       String
     quantity        Int
     inventoryStatus String

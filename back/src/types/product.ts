@@ -1,6 +1,6 @@
 export interface Product {
-  id: string;
-  jsonId: number;
+  id: number;
+  jsonId: number | null;
   code: string;
   name: string;
   description: string;
