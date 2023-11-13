@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from 'express';
-import { productRoutes } from './src/routes/product.route.js';
+import { productRoutes } from './src/routes/product.route';
 import cors from 'cors';
 
 require('dotenv').config();

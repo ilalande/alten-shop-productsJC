@@ -1,5 +1,5 @@
-import prisma from '../../prisma/index.js';
-import { Product } from '../types/product.js';
+import prisma from '../../prisma/index';
+import { Product } from '../types/product';
 import { NewProduct, PayloadNewProduct } from '../types/payload';
 import { transformBodyData } from '../utils/transformBodyData';
 
