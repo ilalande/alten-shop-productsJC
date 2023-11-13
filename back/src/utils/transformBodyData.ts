@@ -1,5 +1,4 @@
-import { Product } from '../types/product.js';
-import { PayloadNewProduct, NewProduct } from '../types/payload.js';
+import { PayloadNewProduct, NewProduct } from '../types/payload';
 
 export const transformBodyData = (payload: PayloadNewProduct) => {
   let jsonIdNum: number | null;
