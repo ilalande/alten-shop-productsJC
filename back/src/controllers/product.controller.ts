@@ -20,7 +20,7 @@ class ProductController {
 
   async getProductById(req: Request, res: Response): Promise<void> {
     try {
-      const productId = req.params.id;
+      const productId = parseInt(req.params.id);
       const product = await findById(productId);
       if (product) {
         res.json(product);
@@ -46,7 +46,7 @@ class ProductController {
 
   async editProduct(req: Request, res: Response): Promise<void> {
     try {
-      const productId = req.params.id;
+      const productId = parseInt(req.params.id);
       const updatedProduct = await edit(productId, req.body);
       if (updatedProduct) {
         res.status(200).json(updatedProduct);
@@ -61,7 +61,7 @@ class ProductController {
 
   async deleteProduct(req: Request, res: Response): Promise<void> {
     try {
-      const productId = req.params.id;
+      const productId = parseInt(req.params.id);
       const deletedProduct = await remove(productId);
 
       if (deletedProduct) {

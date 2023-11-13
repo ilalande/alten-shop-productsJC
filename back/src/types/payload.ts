@@ -1,5 +1,5 @@
 export interface NewProduct {
-  jsonId: number;
+  jsonId: number | null;
   code: string;
   name: string;
   description: string;

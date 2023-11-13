@@ -7,7 +7,7 @@ export async function findAll(): Promise<Product[]> {
   return products;
 }
 
-export async function findById(id: string): Promise<Product | null> {
+export async function findById(id: number): Promise<Product | null> {
   return await prisma.product.findUnique({
     where: {
       id: id,
@@ -22,7 +22,7 @@ export async function create(newProduct: NewProduct): Promise<Product | null> {
 }
 
 export async function edit(
-  id: string,
+  id: number,
   productToUpdate: NewProduct
 ): Promise<Product | null> {
   return await prisma.product.update({
@@ -33,7 +33,7 @@ export async function edit(
   });
 }
 
-export async function remove(id: string) {
+export async function remove(id: number) {
   return await prisma.product.delete({
     where: {
       id: id,
