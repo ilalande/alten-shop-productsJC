@@ -37,6 +37,18 @@ export const productTableConfig: CrudItemOptions[] = [
     },
   },
   {
+    key: 'description',
+    label: 'description',
+    controlType: ControlType.INPUT,
+    type: 'text',
+    columnOptions: {
+      sortable: false,
+      filterable: true,
+      minScreenSize: ScreenWidth.medium,
+      default: true,
+    },
+  },
+  {
     key: 'price',
     label: 'price',
     controlType: ControlType.INPUT,

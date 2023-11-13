@@ -32,8 +32,8 @@ export class ProductsAdminComponent
     this.getProductList();
   }
   getProductList() {
-    this.productService.getProductList().subscribe((productsData) => {
-      this.producList = productsData;
+    this.productService.getProductList().subscribe({
+      next: (productsData) => (this.producList = productsData),
     });
   }
   //--------Manage update or create-----------
